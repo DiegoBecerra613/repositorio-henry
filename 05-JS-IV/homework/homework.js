@@ -21,7 +21,8 @@ function agregarPropiedad(objeto, property) {
   // Devuelve el objeto
   // NOTA: El nombre de la propiedad no es "propiedad", el nombre es el valor del argumento llamado "property" (una cadena/string)
   // Tu código:
-  objeto[property] = undefined;
+  objeto[property] = null;
+  return objeto;
 }
 
 
@@ -46,6 +47,7 @@ function eliminarPropiedad(objeto, unaPropiedad) {
   // Devuelve el objeto
   // Tu código:
   delete objeto[unaPropiedad]
+  return objeto
 }
 
 function nuevoUsuario(nombre, email, password) {
@@ -140,11 +142,10 @@ function agregarMetodoCalculoDescuento(producto) {
   // producto.porcentajeDeDescuento -> 0.2 (o simplemente ".2")
   // producto.calcularPrecioDescuento() -> 20 - (20 * 0.2)
   // Tu código:
-  producto.calcularPrecioDescuento=function(){
-    var descuento = producto.precio*producto.porcentajeDeDescuento;
-    producto.precio=producto.precio-descuento;
-    return producto.precio;
-  }
+  producto.calcularPrecioDescuento = function() {
+    return this.precio - ( this.precio * this.porcentajeDeDescuento );
+  };
+  return producto;
 }
 
 // No modificar nada debajo de esta línea
